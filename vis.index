@@ -1,0 +1,68 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Live-камера и лица</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h2>Камера в реальном времени</h2>
+      <img src="{{ url_for('video_feed') }}" alt="Video Feed">
+    </div>
+    <div class="right">
+      <div id="gallery">
+        <h2 style="color:white;">Снимки лиц</h2>
+        <!-- JS подставит сюда <img> и .pagination -->
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentPage = 1, totalPages = 1;
+    const DELAY = 1;
+
+    async function updateGallery(page) {
+      try {
+        const res = await fetch(/unknown_images?page=${page});
+        const data = await res.json();
+        const gallery = document.getElementById('gallery');
+        totalPages = data.total_pages;
+        currentPage = data.page;
+
+        gallery.innerHTML = '<h2 style="color:white;"></h2>';
+        data.images.forEach(img => {
+          const el = document.createElement('img');
+          el.src = '/static/unknown_faces/' + img;
+          gallery.appendChild(el);
+        });
+
+        const pag = document.createElement('div');
+        pag.className = 'pagination';
+        if (currentPage > 1) {
+          const prev = document.createElement('button');
+          prev.textContent = '« Назад';
+          prev.onclick = () => updateGallery(currentPage - 1);
+          pag.appendChild(prev);
+        }
+        pag.appendChild(document.createTextNode(Стр. ${currentPage} из ${totalPages}));
+        if (currentPage < totalPages) {
+          const next = document.createElement('button');
+          next.textContent = 'Далее »';
+          next.onclick = () => updateGallery(currentPage + 1);
+          pag.appendChild(next);
+        }
+        gallery.appendChild(pag);
+
+      } catch (e) {
+        console.error('Ошибка при загрузке галереи', e);
+      }
+    }
+
+    updateGallery(1);
+    setInterval(() => updateGallery(currentPage), (DELAY + 1) * 1000);
+  </script>
+</body>
+</html>
