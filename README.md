@@ -30,8 +30,6 @@ This solution can be used in **government buildings, commercial companies, and u
 
 ## Project Structure
 
-```
-
 AI.hackathon/
 ├── app.py
 ├── camera_stream.py
@@ -39,7 +37,7 @@ AI.hackathon/
 ├── dlib/
 ├── templates/
 ├── static/
-│   └── unknown_faces/
+│ └── unknown_faces/
 ├── deploy.prototxt
 ├── opencv_face_detector.pbtxt
 ├── res10_300x300_ssd_iter_140000_fp16.caffemodel
@@ -48,8 +46,6 @@ AI.hackathon/
 ├── style11.css
 ├── captured_face.jpg
 ├── README.md
-
-````
 
 ---
 
@@ -95,8 +91,7 @@ http://127.0.0.1:5000
 ## HACKATHON Project
 
 **Face Recognition & Backend**: Dastanmukhan
-**AI / Computer Vision**: Dastanmukhan
-**Frontend**: Dastanmukhan
+**AI/ML / Computer Vision**: Alikhan Zinetov
 
 ```
 
