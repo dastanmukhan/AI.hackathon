@@ -78,6 +78,12 @@ body {
   border-radius: 3px;
   cursor: pointer;
 }
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+  padding: 12px;
+}
 .pagination button:hover {
   background: #666;
 }
