@@ -90,7 +90,7 @@ http://127.0.0.1:5000
 
 ## HACKATHON Project
 
-**AI/Face Recognition & Backend**: Dastanmukhan
+**AI/ML Face Recognition & Backend**: Dastanmukhan
 **AI/ML / Computer Vision**: Alikhan Zinetov
 
 ```
